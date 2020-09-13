@@ -14,17 +14,16 @@ class Product(models.Model):
         app_label = GiftRegistryAPIConfig.name
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
+        unique_together = (('name', 'brand'),)
 
     name: str = models.CharField(
           max_length=128
-        , unique=True
         , blank=False
         , null=False
     )
 
     brand: str = models.CharField(
           max_length=128
-        , unique=True
         , blank=False
         , null=False
     )
