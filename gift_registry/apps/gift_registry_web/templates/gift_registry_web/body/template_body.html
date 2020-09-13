@@ -1,0 +1,18 @@
+
+<body>
+    <h1>This is a new Fancy Gift Registry header!</h1>
+    <div id="div1">Stuff and things</div>
+</body>
+
+<script>
+$(document).ready(function() {
+    $.ajax({
+          url: GIFT_REGISTRY.giftRegistryApiURL + "/product"
+        , context: document.body
+    }).done(function(response) {
+        console.log(response);
+        $("#div1").text(response);
+    });
+});
+$("#div1").html(
+</script>

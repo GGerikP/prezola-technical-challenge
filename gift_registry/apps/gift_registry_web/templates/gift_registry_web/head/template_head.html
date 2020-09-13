@@ -1,0 +1,17 @@
+<head>
+
+    {% block "meta_data" %}
+        {% include "gift_registry_web/head/metadata/template_metadata.html" %}
+    {% endblock %}
+
+    <title>{{SITE_TITLE}}</title>
+
+    {% block script_srcs %}
+        {% include "gift_registry_web/head/script_srcs/template_script_srcs.html" %}
+    {% endblock %}
+
+    {% block css_links %}
+        {% include "gift_registry_web/head/css_links/template_css_links.html" %}
+    {% endblock %}
+
+</head>

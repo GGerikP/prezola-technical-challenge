@@ -10,10 +10,13 @@ load_dotenv(dotenv_path=Path('.') / '.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR / 'apps'))
 
+WEBSITE_TITLE=os.environ.get('WEBSITE_TITLE', 'Fancy Gift Registry')
+GIFT_REGISTRY_API_URL=os.environ.get('GIFT_REGISTRY_API_URL', '/api')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG',0)))
 ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS').split(",")]
 DOMAIN = os.environ.get('DOMAIN')
+
 
 APPEND_SLASH = True
 
@@ -53,6 +56,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'gift_registry_web.context_processors.global_vars',
             ],
         },
     },
@@ -109,3 +113,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(str(BASE_DIR), STATIC_URL.strip("/"))
+
+
