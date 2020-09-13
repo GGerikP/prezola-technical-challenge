@@ -1,6 +1,6 @@
 [
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 1,
     "fields" : {
       "name": "Tea pot",
@@ -11,7 +11,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 2,
     "fields" : {
       "name": "Cast Iron Oval Casserole - 25cm; Volcanic",
@@ -22,7 +22,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 4,
     "fields" : {
       "name": "Gordon Ramsay Maze 12 Piece Set, White",
@@ -33,7 +33,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 5,
     "fields" : {
       "name": "9-speed Hand Mixer; Almond Cream",
@@ -44,7 +44,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 6,
     "fields" : {
       "name": "Mini Stand Mixer; Empire Red",
@@ -55,7 +55,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 7,
     "fields" : {
       "name": "50's Style Stand Mixer, Full-Colour White",
@@ -66,7 +66,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 8,
     "fields" : {
       "name": "50's Style Stand Mixer, Black",
@@ -77,7 +77,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 9,
     "fields" : {
       "name": "Polka Bedding Set, King, Silver",
@@ -88,7 +88,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 10,
     "fields" : {
       "name": "Paignton Bedding Set, King, White",
@@ -99,7 +99,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 11,
     "fields" : {
       "name": "Original Kettle E-5710 Charcoal Barbecue - 57cm; Black",
@@ -110,7 +110,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 12,
     "fields" : {
       "name": "Compact Charcoal Grill, 57 cm",
@@ -121,7 +121,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 13,
     "fields" : {
       "name": "Falcon T2 Square Parasol, 2.7m, Taupe",
@@ -132,7 +132,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 14,
     "fields" : {
       "name": "Riva Round Parasol - 3m; Anthracite",
@@ -143,7 +143,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 15,
     "fields" : {
       "name": "Glow Challenger T2 Square Parasol - 3m, Taupe",
@@ -154,7 +154,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 16,
     "fields" : {
       "name": "Ceramic Bottle Lamp, Small",
@@ -165,7 +165,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 17,
     "fields" : {
       "name": "Gold Sitting Mouse Lamp",
@@ -176,7 +176,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 18,
     "fields" : {
       "name": "Usha Mango Wood Lamp Base",
@@ -187,7 +187,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 19,
     "fields" : {
       "name": "Sea Green Honeycomb Glass Lamp",
@@ -198,7 +198,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 20,
     "fields" : {
       "name": "Faux Tortoiseshell Lamp",
@@ -209,7 +209,7 @@
     }
   },
   {
-    "model": "gift_registry.product",
+    "model": "gift_registry_api.product",
     "pk": 21,
     "fields" : {
       "name": "2 Person Blue Tweed Hamper",

@@ -1,12 +1,14 @@
 
 from dotenv import load_dotenv
 from pathlib import Path
+import os
+import sys
 
 load_dotenv(dotenv_path=Path('.') / '.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(Path(BASE_DIR + 'apps'))
+sys.path.append(str(BASE_DIR / 'apps'))
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG',0)))
@@ -23,6 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'gift_registry_api.apps.GiftRegistryAPIConfig',
+    'gift_registry_web.apps.GiftRegistryWebConfig',
 ]
 
 MIDDLEWARE = [
@@ -40,7 +45,7 @@ ROOT_URLCONF = 'gift_registry.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path(BASE_DIR + 'templates')],
+        'DIRS': [Path(str(BASE_DIR) + 'apps/gift_registry_web/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -3,10 +3,17 @@ from django.db import models
 from uuid import uuid4
 import decimal
 
+from gift_registry_api.apps import GiftRegistryAPIConfig
+
 class Product(models.Model):
 
     # Primary Field: id is automatically created for us
     # but it'd be better to create it as a uuid field
+
+    class Meta:
+        app_label = GiftRegistryAPIConfig.name
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
     name: str = models.CharField(
           max_length=128
@@ -36,4 +43,20 @@ class Product(models.Model):
         , blank=False
         , null=False
     )
+
+    in_stock_quantity: int = models.PositiveIntegerField(
+          blank=False
+        , null=False
+        , default=0
+    )
+
+    def __str__(self):
+        ret = "Product: name={name}, brand={brand}, price={price}, currency={currency}, in_stock_quantity={in_stock_quantity}".format(
+              name=self.name
+            , brand=self.brand
+            , price=self.price
+            , currency=self.currency
+            , in_stock_quantity=self.in_stock_quantity
+        )
+        return ret
 
