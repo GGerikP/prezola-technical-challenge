@@ -1,7 +1,9 @@
 
 <body>
-    <h1>This is a new Fancy Gift Registry header!</h1>
-    <div id="div1">Stuff and things</div>
+    <div class="content_container bordered">
+        <h1>Fancy Gift Registry header!</h1>
+        <table class="product_container bordered"></table>
+    </div>
 </body>
 
 <script>
@@ -10,9 +12,17 @@ $(document).ready(function() {
           url: GIFT_REGISTRY.giftRegistryApiURL + "/product"
         , context: document.body
     }).done(function(response) {
+        console.log("This is the document ready function.");
         console.log(response);
-        $("#div1").text(response);
+        for (var i = 0; i < response.length; i++) {
+            row = $("<tr></tr>")
+            row.append($("<td class='product_field product_id'></td>").text(response[i].id))
+            row.append($("<td class='product_field product_name'></td>").text(response[i].name))
+            row.append($("<td class='product_field product_brand'></td>").text(response[i].brand))
+            row.append($("<td class='product_field product_price'></td>").text(response[i].price + response[i].currency))
+            row.append($("<td class='product_field product_in_stock_quantity'></td>").text(response[i].in_stock_quantity))
+            $(".product_container").append(row);
+        }
     });
 });
-$("#div1").html(
 </script>

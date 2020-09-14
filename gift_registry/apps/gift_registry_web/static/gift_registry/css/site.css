@@ -1,0 +1,24 @@
+
+body {
+    width: 100%;
+}
+
+.content_container {
+    margin: auto;
+    width: 80%;
+}
+
+.product_container {
+    max-width: 900px;
+    min-width: 600px;
+}
+
+.product_field {
+    max-width: 200px;
+    min-width: 75px;
+    border: solid black 1px;
+}
+
+.bordered {
+    border: solid black 1px;
+}
