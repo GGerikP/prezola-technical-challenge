@@ -7,6 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
+        partial = True
         fields = (
               'id'
             , 'name'

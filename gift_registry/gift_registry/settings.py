@@ -115,4 +115,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(str(BASE_DIR), STATIC_URL.strip("/"))
 
+# Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
 

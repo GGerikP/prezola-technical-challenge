@@ -16,6 +16,12 @@ gift_registry_router.register(
     , basename=app_name + '-product'
 )
 
+gift_registry_router.register(
+      'registry'
+    , views.RegistryViewSet
+    , basename=app_name + '-registry'
+)
+
 urlpatterns = [
     path('', include(gift_registry_router.urls)),
 ]

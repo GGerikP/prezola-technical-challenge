@@ -15,7 +15,7 @@ class Registry(models.Model):
         verbose_name = 'Registry'
         verbose_name_plural = 'Registrys'
 
-    user = models.ForeignKey(
+    registry_owner = models.ForeignKey(
           'auth.User'
         , on_delete=models.CASCADE
         , blank=False
@@ -28,11 +28,18 @@ class Registry(models.Model):
         , null=False
     )
 
+    products = models.ManyToManyField(
+          'gift_registry_api.Product'
+        , related_name='registries'
+        , symmetrical=False
+        , blank=True
+    )
+
     def __str__(self):
         ret = "Registry: ID={id}, username={username} ({user_id}), description={description}".format(
               id=self.id
-            , username=self.user.username
-            , user_id=self.user.id
+            , username=self.registry_owner.username
+            , user_id=self.registry_owner.id
             , description=self.description
         )
         return ret
