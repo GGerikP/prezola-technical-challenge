@@ -46,6 +46,8 @@ The following are functions available to for the application:
     - Not purchased gifts: each available gift with their details.
 
 ## Extended Versions of the application would normally include:
+ - Add authentication to the frontend and the API
+ - Add pipelines for automated deployment (i.e. CI/CD)
  - A proper database (postgres, informix, mysql, etc)
  - Integration tests
  - A fully extracted front end (possibly React or angular) (The gift_registry_web would be removed along with all it's templates)
