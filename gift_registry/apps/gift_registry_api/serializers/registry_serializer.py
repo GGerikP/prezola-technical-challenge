@@ -2,11 +2,11 @@
 from rest_framework import serializers
 
 from gift_registry_api.models import Registry
-from gift_registry_api.serializers.product_serializer import ProductSerializer
+from gift_registry_api.serializers.gift_serializer import GiftSerializer
 
 class RegistrySerializer(serializers.ModelSerializer):
 
-    products = ProductSerializer(
+    gifts = GiftSerializer(
           many=True
         , read_only=False
     )
@@ -18,6 +18,6 @@ class RegistrySerializer(serializers.ModelSerializer):
               'id'
             , 'registry_owner'
             , 'description'
-            , 'products'
+            , 'gifts'
         )
 

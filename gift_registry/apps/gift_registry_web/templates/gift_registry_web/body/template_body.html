@@ -1,8 +1,31 @@
 
 <body>
-    <div class="content_container bordered">
-        <h1>Fancy Gift Registry header!</h1>
-        <table class="product_container"></table>
+    <div class="content_container">
+    {% block header_buttons %}
+        {% include "gift_registry_web/body/header/template_header.html" %}
+    {% endblock %}
+        <h1>Simple Gift Registry</h1>
+
+        <hr />
+        <p>Welcome to this simple gift registry.  This has been built by Gerik Peterson as a simple demo product for the Wedding Shop.</p>
+        <p>The following are the key features of this site:</p>
+        <ul>
+            <li>Python Backend</li>
+            <li>Django Middleware to manage the core of the application (and provide most of the system framework)</li>
+            <li>JSON API - Ensure we extract the front end from the backend as much as possible.</li>
+            <li>Two internal apps: the gift_registry_api responsible for the JSON API and a gift_registry_web responsible for serving up the simple web template pages</li>
+            <li>Simple relational sqlite3 database with a handful of models</li>
+            <li>Functional data management (via this simple GUI and the <a href="/admin">administration screens</a>) - includes status changes and stock management.</li>
+            <li><a href="/report">Report display</a></li>
+            <li>The source code is stored on my <a href="https://github.com/GGerikP/prezola-technical-challenge">github account</a></li>
+        </ul>
+
+        <h2>Purchase a gift</h2>
+        <table class="gift_container available"></table>
     </div>
 </body>
-
+<script>
+$(document).ready(function() {
+    populate_registry()
+});
+</script>

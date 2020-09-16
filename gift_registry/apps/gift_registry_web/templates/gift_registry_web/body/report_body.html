@@ -1,0 +1,21 @@
+
+<body>
+    <div class="content_container">
+    {% block header_buttons %}
+        {% include "gift_registry_web/body/header/template_header.html" %}
+    {% endblock %}
+        <h1>Gift Registry Report</h1>
+        <h2>Purchased Gifts</h2>
+        <table class="gift_container purchased"></table>
+        <hr />
+        <h2>Available Gifts</h2>
+        <table class="gift_container available"></table>
+        <hr />
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    populate_registry(undefined, "available", "report");
+    populate_registry(undefined, "purchased", "report");
+});
+</script>

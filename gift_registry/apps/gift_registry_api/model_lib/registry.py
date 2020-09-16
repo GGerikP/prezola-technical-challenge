@@ -13,7 +13,7 @@ class Registry(models.Model):
     class Meta:
         app_label = GiftRegistryAPIConfig.name
         verbose_name = 'Registry'
-        verbose_name_plural = 'Registrys'
+        verbose_name_plural = 'Registries'
 
     registry_owner = models.ForeignKey(
           'auth.User'
@@ -26,13 +26,6 @@ class Registry(models.Model):
           max_length=128
         , blank=False
         , null=False
-    )
-
-    products = models.ManyToManyField(
-          'gift_registry_api.Product'
-        , related_name='registries'
-        , symmetrical=False
-        , blank=True
     )
 
     def __str__(self):

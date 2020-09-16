@@ -1,50 +1,84 @@
-
+/*
 $(document).ready(function() {
-    $.ajax({
-          url: GIFT_REGISTRY.giftRegistryApiURL + "/registry/1"
-        , context: document.body
-    }).done(function(registry) {
-        populate_registry(registry);
-    });
+    populate_registry()
 });
+*/
 
+function populate_registry(registry_id, purchase_status, display_type) {
 
-function populate_registry(registry) {
-    console.log(registry);
-    products = registry.products;
-    $(".product_container").empty();
-    for (let i = 0; i < products.length; i++) {
-        console.log("products[" + i + "] = " + JSON.stringify(products[i]));
-        if (products[i] == undefined || products[i].in_stock_quantity <= 0) {
-            continue
+    // TODO: get the registry of the logged in user and use it to query the registry data
+    registry_id = (registry_id != undefined ? registry_id : 1);
+    purchase_status = (purchase_status != undefined ? purchase_status : "available");
+    display_type = (display_type != undefined ? display_type : "purchase");
+
+    console.log("registry_id=" + registry_id + ", purchase_status=" + purchase_status + ", display_type=" + display_type)
+    $.ajax({
+          url: GIFT_REGISTRY.giftRegistryApiURL + "/registry/" + registry_id + "/?purchase_status=" + purchase_status
+    }).done(function(registry) {
+        console.log(registry);
+        gifts = registry.gifts;
+        let gift_container = $(".gift_container." + purchase_status);
+
+        gift_container.empty();
+
+        let row = $("<tr></tr>").attr("class", "gift_header_row");
+        row.append($("<td class='gift_field'></td>").text("ID"))
+        row.append($("<td class='gift_field'></td>").text("Name"))
+        row.append($("<td class='gift_field'></td>").text("Brand"))
+        row.append($("<td class='gift_field'></td>").text("Price"))
+
+        if (display_type == "purchase") {
+            row.append($("<td class='gift_field'></td>"))
+        } else {
+            row.append($("<td class='gift_field'></td>").text("In Stock Quantity"))
         }
-        row = $("<tr></tr>")
-        row.append($("<td class='product_field'></td>").text(products[i].id))
-        row.append($("<td class='product_field'></td>").text(products[i].name))
-        row.append($("<td class='product_field'></td>").text(products[i].brand))
-        row.append($("<td class='product_field'></td>").text(products[i].price + products[i].currency))
 
-        purchase_button=$("<button>Purchase</button>").attr("onclick", "purchase_product(" + registry.id + ", " + products[i].id + ")");
-        row.append($("<td class='product_field'></td>").append(purchase_button));
-        $(".product_container").append(row);
-    }
+        gift_container.append(row);
+
+        for (let i = 0; i < gifts.length; i++) {
+            let gift = gifts[i];
+            let product = gift.product;
+            console.log("product[" + i + "] = " + JSON.stringify(product));
+            if (product == undefined) {
+                continue
+            }
+            let row = $("<tr></tr>")
+            row.append($("<td class='gift_field'></td>").text(product.id))
+            row.append($("<td class='gift_field'></td>").text(product.name))
+            row.append($("<td class='gift_field'></td>").text(product.brand))
+            row.append($("<td class='gift_field'></td>").text(product.price + product.currency))
+
+            if (display_type == "purchase") {
+                let purchase_button=$("<button>Purchase</button>").attr("onclick", "purchase_gift(" + registry.id + ", " + gift.id + ")");
+                if (product.in_stock_quantity <= 0) {
+                    purchase_button.attr("disabled", true);
+                    purchase_button.attr("title","Sold out");
+                }
+                row.append($("<td class='gift_field'></td>").append(purchase_button));
+            } else {
+                row.append($("<td class='gift_field'></td>").append(product.in_stock_quantity))
+            }
+
+            gift_container.append(row);
+        }
+    });
 }
 
-function purchase_product(registry_id, product_id) {
+function purchase_gift(registry_id, gift_id) {
     $.ajax({
           url: GIFT_REGISTRY.giftRegistryApiURL + "/registry/" + registry_id
     }).done(function(registry) {
-        product = undefined;
-        for (var i = 0; i < registry.products.length; i++) {
-            if (registry.products[i].id == product_id) {
-                product = registry.products[i];
-                registry["purchased_product"] = registry.products[i];
-                registry.products.splice(i, 1);
+        var gift = undefined;
+        for (var i = 0; i < registry.gifts.length; i++) {
+            if (registry.gifts[i].id == gift_id) {
+                gift = registry.gifts[i];
+                registry["purchased_gift"] = registry.gifts[i];
+                registry.gifts.splice(i, 1);
             }
         }
-        if (product == undefined || product.in_stock_quantity <= 0) {
-            alert("We're sorry this product is no longer available.");
-            populate_registry(registry);
+        if (gift == undefined || gift.in_stock_quantity <= 0) {
+            alert("We're sorry this gift is no longer available.");
+            populate_registry(registry.id);
         }
     }).done(function(registry) {
         console.log("Updating the registry with: " + JSON.stringify(registry));
@@ -53,8 +87,8 @@ function purchase_product(registry_id, product_id) {
             , data: JSON.stringify(registry)
             , dataType: 'json'
             , type: 'PATCH'
-            , success: function(resp) {
-                populate_registry(registry);
+            , success: function(registry) {
+                populate_registry(registry.id);
             }
             , error: function(resp) {
                 console.log(resp);
