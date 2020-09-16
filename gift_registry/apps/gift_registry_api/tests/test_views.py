@@ -1,0 +1,3 @@
+
+from gift_registry_api.tests.views_lib.test_registry_viewset import RegistryViewSetTestCase
+

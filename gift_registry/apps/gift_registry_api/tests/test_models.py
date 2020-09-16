@@ -1,0 +1,3 @@
+from gift_registry_api.tests.model_lib.test_registry import RegistryTestCase
+from gift_registry_api.tests.model_lib.test_gift import GiftTestCase
+from gift_registry_api.tests.model_lib.test_product import ProductTestCase

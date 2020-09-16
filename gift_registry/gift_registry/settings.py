@@ -1,5 +1,7 @@
 
+from datetime import datetime
 from dotenv import load_dotenv
+import logging
 from pathlib import Path
 import os
 import sys
@@ -10,13 +12,13 @@ load_dotenv(dotenv_path=Path('.') / '.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR / 'apps'))
 
-WEBSITE_TITLE=os.environ.get('WEBSITE_TITLE', 'Fancy Gift Registry')
-GIFT_REGISTRY_API_URL=os.environ.get('GIFT_REGISTRY_API_URL', '/api')
+WEBSITE_TITLE = os.environ.get('WEBSITE_TITLE', 'Fancy Gift Registry')
+GIFT_REGISTRY_API_URL = os.environ.get('GIFT_REGISTRY_API_URL', '/api')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = bool(int(os.environ.get('DEBUG',0)))
 ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS').split(",")]
 DOMAIN = os.environ.get('DOMAIN')
-
+LOGGING_DIR = os.environ.get('LOGGING_DIR')
 
 APPEND_SLASH = True
 
@@ -94,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -116,8 +117,44 @@ STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(str(BASE_DIR), STATIC_URL.strip("/"))
 
 # Rest Framework
+# TODO: Authentication has been disabled for the time being as we do not have a log in system in place yet.
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        # This should be replaced with a rotating file handler
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': LOGGING_DIR + '/debug-' + datetime.now().strftime("%Y%m%d_%H%M%S") + '.log',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'propagate': True,
+            'level': 'INFO'
+        }
+    }
+}

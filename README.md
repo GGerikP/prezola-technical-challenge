@@ -48,7 +48,9 @@ The following are functions available to for the application:
 ## Extended Versions of the application would normally include:
  - A proper database (postgres, informix, mysql, etc)
  - Integration tests
- - A fully extracted front end (possibly React or angular) (All templates and the gift_registry_web would be removed)
+ - A fully extracted front end (possibly React or angular) (The gift_registry_web would be removed along with all it's templates)
  - More thorough unit tests
  - Possibly a restructure using Flask rather than Django so that the models can be re-used in other applications (and more of the parts of the application turned into libraries)
+ - It'd also be useful to link this up to Sentry so that we have an Exception notification system
+
 
