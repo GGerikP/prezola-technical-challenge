@@ -1,4 +1,4 @@
-# Wedding Shop Technical test (Prezola)
+# Wedding Shop Technical Test (Prezola)
 
 # (Meta Data normally not included in a repo): Candidate:
  - (Giles) Gerik Peterson
@@ -7,7 +7,7 @@
 
 ## Application Overview:
 
-This is a simple application for creating a gift registry for wedding couples.  It uses Django as it's core, the rest_framework for a JSON API for accessing the data, and a handful of very simple Django tmeplates to provide as an example of consuming the API endpoints.
+This is a simple application for creating a gift registry for wedding couples.  It uses Django as it's core, the rest_framework for a JSON API for accessing the data, and a handful of very simple Django templates to provide as an example of consuming the API endpoints.
 
 ## Installation:
 
