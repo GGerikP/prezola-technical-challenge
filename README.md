@@ -46,13 +46,18 @@ The following are functions available to for the application:
     - Not purchased gifts: each available gift with their details.
 
 ## Extended Versions of the application would normally include:
+ - Make a proper front end (using proper frameworks such as React, Angular, Bootstrap, CSS Grid, etc. and drop the Django template player)
  - Add authentication to the frontend and the API
+ - Add the swaggerhub definitions for the API
  - Add pipelines for automated deployment (i.e. CI/CD)
  - A proper database (postgres, informix, mysql, etc)
  - Integration tests
- - A fully extracted front end (possibly React or angular) (The gift_registry_web would be removed along with all it's templates)
  - More thorough unit tests
  - Possibly a restructure using Flask rather than Django so that the models can be re-used in other applications (and more of the parts of the application turned into libraries)
  - It'd also be useful to link this up to Sentry so that we have an Exception notification system
+ - We should also turn all of the ids into UUIDs so that a person cannot sequentially scan the system
+ - We also need add error handling for all of the missing endpoints
+
+
 
 
